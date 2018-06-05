@@ -5,7 +5,7 @@
 
 实现：
     1,使用CloudBlockBlob作为存储容器。
-    2,使用upload()和openInputStream()实现文件的存储。
+    2,使用upload()和openInputStream()实现文件的存储和下载。
     3,存储到Azure上的文件，在上传之前会进行文件的拆分和加密。
     4,下载到本地的文件，需要进行逆解密、拼接，得到原文件。    
 
