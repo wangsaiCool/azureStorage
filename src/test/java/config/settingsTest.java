@@ -1,3 +1,6 @@
+package config;
+
+import config.settings;
 import org.junit.Test;
 
 public class settingsTest {
