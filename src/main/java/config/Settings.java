@@ -1,6 +1,8 @@
 package config;
 
 import org.apache.commons.lang.Validate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,6 +11,7 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 public class Settings {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Settings.class);
     private static String accountName = null;
     private static String accountKey = null;
     private static String endpointSuffix = null;
@@ -26,6 +29,7 @@ public class Settings {
         if (_accountName != null) {
             Settings.accountName = _accountName;
         } else {
+            LOGGER.error("\"accountName is null.\"");
             throw new IllegalArgumentException("accountName is null.");
         }
     }
@@ -43,6 +47,7 @@ public class Settings {
         if (_accountKey != null) {
             Settings.accountKey = _accountKey;
         } else {
+            LOGGER.error("\"accountKey is null.\"");
             throw new IllegalArgumentException("accountKey is null.");
         }
     }
@@ -60,6 +65,7 @@ public class Settings {
         if (_endpointSuffix != null) {
             Settings.endpointSuffix = _endpointSuffix;
         } else {
+            LOGGER.error("\"endpointSuffix is null.\"");
             throw new IllegalArgumentException("endpointSuffix is null.");
         }
     }
@@ -67,10 +73,9 @@ public class Settings {
     private static String getPropertiesValue(String propertiesKey) {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream(new File("src/main/resources/Settings.properties")));
+            properties.load(new FileInputStream(new File("src/main/resources/settings.properties")));
         } catch (IOException e) {
-            //TODO log
-            e.printStackTrace();
+            LOGGER.error(e.toString());
         }
 
         Enumeration enum1 = properties.propertyNames();
