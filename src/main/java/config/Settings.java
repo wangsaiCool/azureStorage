@@ -1,5 +1,7 @@
 package config;
 
+import org.apache.commons.lang.Validate;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
